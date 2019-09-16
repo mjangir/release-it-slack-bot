@@ -1,0 +1,59 @@
+{
+  "name": "release-it-slack-bot",
+  "version": "0.0.0-development",
+  "description": "Bump your release information on slack channel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mjangir/release-it-slack-bot.git"
+  },
+  "keywords": [
+    "release-it-slack",
+    "release",
+    "slack",
+    "slack-bot"
+  ],
+  "author": "Manish Jangir",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mjangir/release-it-slack-bot/issues"
+  },
+  "homepage": "https://github.com/mjangir/release-it-slack-bot#readme",
+  "dependencies": {
+    "es6-promise": "^4.2.8",
+    "lodash": "^4.17.15",
+    "release-it": "^12.3.6",
+    "request": "^2.88.0",
+    "slack-node": "^0.1.8",
+    "slackify-markdown": "^1.1.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@commitlint/prompt": "^8.1.0",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.0.2",
+    "husky": "^3.0.5",
+    "semantic-release": "^15.13.24"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
