@@ -1,6 +1,6 @@
 const Plugin = require("release-it").Plugin;
 const Promise = require("es6-promise").Promise;
-const Slack = require("slack-node");
+const { IncomingWebhook } = require("@slack/webhook");
 const slackifyMarkdown = require("slackify-markdown");
 const fs = require("fs");
 const path = require("path");
@@ -115,15 +115,16 @@ class SlackNotify extends Plugin {
         reject(new Error("Slack request timed out"));
       }, TIMEOUT);
 
-      const slack = new Slack();
-      slack.setWebhook(webHookUrl);
-      slack.webhook(payload, err => {
-        clearTimeout(timeout);
-        if (err) {
-          return reject(err);
-        }
-        return resolve();
-      });
+      const webhook = new IncomingWebhook(webHookUrl);
+      webhook
+        .send(payload)
+        .then(function(result) {
+          resolve(result);
+        })
+        .catch(function(err) {
+          throw new Error(err);
+          reject(err);
+        });
     });
   }
 
