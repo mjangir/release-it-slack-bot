@@ -28,7 +28,7 @@
     "@slack/webhook": "^5.0.1",
     "es6-promise": "^4.2.8",
     "lodash": "^4.17.15",
-    "release-it": "^12.3.6",
+    "release-it": "^15.6.0",
     "request": "^2.88.0",
     "slackify-markdown": "^1.1.1"
   },
